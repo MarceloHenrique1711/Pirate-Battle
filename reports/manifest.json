@@ -1,6 +1,6 @@
 {
   "preparedAt": "2026-10-09T04:00:29.772449+00:00",
-  "publicDeployment": "Pending: owner must create/push repository and deploy to Vercel.",
+  "publicDeployment": "Passed: https://pirate-battle-beige.vercel.app. Evidence: public-deployment-verification.json.",
   "checks": {
     "cleanDependencyInstall": "npm ci --offline --no-audit --no-fund; public lockfile, cached packages",
     "lint": "passed",

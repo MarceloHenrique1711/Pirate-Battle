@@ -26,9 +26,10 @@ The successful owner run used Node 24.11.1 and npm 11.7.0 on Windows. The earlie
 Linux environment used a local software-rendered Chromium 153 override. The
 deliverable uses standard Playwright installation. No private backend is needed.
 
-After publication, run npm run verify:deploy -- https://YOUR-PUBLIC-URL and copy
-the generated JSON here as public-deployment-verification.json. Fill SUBMISSION.md
-with the repository URL, public URL and verified runtime source commit.
+The public deployment passed verification at
+https://pirate-battle-beige.vercel.app/.
+Evidence: public-deployment-verification.json.
+Repository URL and verified runtime source commit are recorded in SUBMISSION.md.
 
 The cleaned review checkout passed npm run check (lint, types, 18 unit/integration
 tests and normal production build) on Linux using existing installed dependencies.
