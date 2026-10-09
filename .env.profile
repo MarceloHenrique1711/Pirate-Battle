@@ -1,0 +1,2 @@
+VITE_PROFILE=true
+VITE_E2E=false

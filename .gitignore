@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Generated E2E output (visual baselines remain tracked)
+playwright-report/
+test-results/
+playwright.local.config.ts
+
+# Generated profiling captures; the documented analysis stays tracked.
+performance-results/
+deployment-results/
+
+# Local hosting metadata and local environment overrides
+.vercel/
+.env.local
+.env.*.local
+
+# Duplicate downloaded archives at the repository root; reports/ stays tracked.
+/Playwright-relatorio-e-traces*.zip
+/PirateBattle-performance-evidencias*.zip
+/PirateBattle*.zip
+
+# TypeScript incremental cache and optional coverage output
+*.tsbuildinfo
+coverage/
+
+# Temporary patch instructions; project documentation remains tracked
+/APPLY-PATCH.md

@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:5174",
+  "verifiedAt": "2026-10-09T03:59:51.223Z",
+  "visited": [
+    "/",
+    "/options",
+    "/result",
+    "/ranking",
+    "/history",
+    "/arena"
+  ],
+  "rankingAndHistoryMocks": true,
+  "productionControls": {
+    "e2e": false,
+    "profile": false
+  },
+  "errors": [],
+  "status": "passed",
+  "scope": "Local optimized production preview only; not a public Vercel deployment."
+}

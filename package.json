@@ -1,0 +1,62 @@
+{
+  "name": "pirate-battle",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "typecheck": "tsc -b && tsc -p tsconfig.e2e.json",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:update": "playwright test --update-snapshots",
+    "build:e2e": "tsc -b && vite build --mode e2e",
+    "test:e2e:types": "tsc -p tsconfig.e2e.json",
+    "test:e2e:report": "playwright show-report",
+    "build:profile": "tsc -b && vite build --mode profile",
+    "profile": "node scripts/profile.mjs",
+    "profile:summary": "node scripts/profile-summary.mjs",
+    "verify:deploy": "node scripts/verify-deploy.mjs"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.104.1",
+    "axios": "^1.20.0",
+    "pixi.js": "^8.22.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.0",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.6",
+    "globals": "^17.12.0",
+    "jsdom": "^29.1.1",
+    "msw": "^3.0.2",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.69.0",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.3"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10"
+  }
+}

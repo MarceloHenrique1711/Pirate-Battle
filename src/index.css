@@ -1,0 +1,175 @@
+@font-face { font-family: Fredoka; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/fredoka-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: Fredoka; font-style: normal; font-weight: 700; font-display: swap; src: url('/assets/fonts/fredoka-latin-700-normal.woff2') format('woff2'); }
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #247f98; }
+body, button, input, select { font-family: Fredoka, 'Trebuchet MS', sans-serif; font-weight: 600; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:disabled { cursor: default; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #fff1ad; outline-offset: 3px; }
+h1, h2, p { margin: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.menu-scene { position: fixed; inset: 0; background: url('/assets/ui_scene_background.png') center / cover no-repeat; color: #ffe9b7; overflow: hidden; }
+.menu-scene::before { content: ''; position: absolute; inset: 0; background: rgba(8, 27, 37, .24); }
+.menu-scene-overlay { background: transparent; z-index: 20; }
+.menu-stage, .battle-ui { position: absolute; width: 1800px; height: 1000px; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--menu-scale, 1)); transform-origin: center; }
+.brand-logo { position: absolute; width: 132px; right: 86px; bottom: 42px; pointer-events: none; }
+.wood-panel { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 800px; height: 680px; isolation: isolate; }
+.wood-panel::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; border: solid transparent; border-width: 80px 64px;
+  border-image: url('/assets/png/retina/ui/menu/panel_menu.png') 110 90 110 90 fill / 1 / 0 stretch; }
+.wood-panel-main { height: 750px; }
+.wood-panel-log { width: 1420px; height: 750px; }
+.wood-panel-help { width: 900px; height: 680px; z-index: 25; }
+h1, h2 { font-size: 42px; line-height: 1.1; font-weight: 600; color: #ffe9b7; text-shadow: 0 3px 0 #101d29; }
+.asset-button { display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; width: 350px; height: 88px; padding: 0 30px 2px;
+  border: 0; background: transparent url('/assets/png/retina/ui/menu/button_primary_normal.png') center / 100% 100% no-repeat;
+  color: #3e2d19; font-size: 28px; line-height: 1; white-space: nowrap; }
+.asset-button:hover { background-image: url('/assets/png/retina/ui/menu/button_primary_hover.png'); }
+.asset-button:active { background-image: url('/assets/png/retina/ui/menu/button_primary_pressed.png'); }
+.asset-button:disabled { background-image: url('/assets/png/retina/ui/menu/button_primary_disabled.png'); }
+.asset-button-secondary { width: 230px; height: 64px; font-size: 17px; color: #fff1d2; background-image: url('/assets/png/retina/ui/menu/button_secondary_normal.png'); }
+.asset-button-secondary:hover { background-image: url('/assets/png/retina/ui/menu/button_secondary_normal.png'); filter: brightness(1.08); }
+.asset-button-secondary:active { background-image: url('/assets/png/retina/ui/menu/button_secondary_pressed.png'); }
+.round-button { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; flex-shrink: 0; border: 0; padding: 0;
+  background: transparent url('/assets/png/retina/ui/controls/button_round_normal.png') center / 100% 100% no-repeat; touch-action: none; }
+.round-button img { width: 52%; height: 52%; object-fit: contain; pointer-events: none; }
+.round-button:hover { background-image: url('/assets/png/retina/ui/controls/button_round_hover.png'); }
+.round-button:active, .round-button[data-pressed="true"] { background-image: url('/assets/png/retina/ui/controls/button_round_pressed.png'); }
+.round-button:disabled { opacity: .45; filter: saturate(.6); }
+.main-title { position: absolute; width: 512px; height: 170px; left: 144px; top: 63px; object-fit: contain; }
+.main-tagline { position: absolute; top: 240px; width: 100%; text-align: center; font-size: 14px; letter-spacing: 4px; }
+.main-actions { position: absolute; top: 270px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.main-ship { position: absolute; height: 82px; width: auto; left: 50%; transform: translateX(-50%); top: 475px; }
+.main-caption { position: absolute; top: 579px; width: 100%; text-align: center; font-size: 17px; }
+.main-tabs { position: absolute; top: 615px; width: 100%; display: flex; justify-content: center; gap: 14px; }
+.menu-help-trigger { position: absolute; left: 36px; bottom: 36px; }
+.help-content { position: absolute; inset: 85px 90px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; font-size: 20px; }
+.help-content input { width: 320px; font-size: 22px; padding: 10px; border-radius: 8px; color: #ffe9b7; background: #122432; border: 1px solid #d5a049; }
+.text-link { color: #ffe9b7; font: inherit; border: 0; padding: 4px; background: transparent; text-decoration: underline; }
+.options-content { position: absolute; inset: 133px 80px 90px; display: flex; flex-direction: column; align-items: center; }
+.options-content h1 { margin-bottom: 30px; }
+.setting-block { width: 330px; text-align: center; }
+.setting-block + .setting-block { margin-top: 22px; }
+.setting-block p { font-size: 19px; color: #dcca9f; }
+.setting-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 25px; }
+.setting-controls output { min-width: 170px; font-size: 28px; color: #fff0c5; }
+.options-content > .asset-button { margin-top: 24px; }
+.ui-error { color: #ffb09c; font-size: 15px; }
+.log-content { position: absolute; inset: 43px 76px 45px; display: flex; flex-direction: column; align-items: center; }
+.log-tabs { display: flex; justify-content: center; gap: 16px; margin-top: 12px; }
+.log-tabs .asset-button { width: 250px; height: 64px; font-size: 21px; }
+.log-subtitle { margin-top: 12px; font-size: 16px; color: #c5d2d6; }
+.background-update { height: 14px; font-size: 12px; color: #d8c295; }
+.log-table-wrap { width: 100%; margin-top: 5px; flex: 1; min-height: 0; }
+.log-table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0 8px; text-align: left; font-size: 20px; }
+.log-table th { height: 27px; color: #bdd0d6; font-size: 14px; font-weight: 600; letter-spacing: 1px; }
+.log-table td, .log-table th { padding: 0 15px; }
+.log-table td { height: 51px; background: rgba(9, 24, 34, .66); border-top: 1px solid transparent; border-bottom: 1px solid transparent; color: #fff1ce; }
+.log-table td:first-child { border-radius: 8px 0 0 8px; }
+.log-table td:last-child { border-radius: 0 8px 8px 0; }
+.log-table .user-row td { background: rgba(173, 134, 52, .32); border-color: rgba(234, 192, 86, .24); }
+.log-table .points-cell, .log-table .rank-cell { color: #ffda88; }
+.log-table .date-cell { font-size: 16px; color: #aac3c9; }
+.ranking-star { width: 32px; height: 32px; object-fit: contain; vertical-align: middle; margin-right: 8px; }
+.you-badge { padding: 2px 5px; font-size: 12px; color: #ffdb8a; border: 1px solid #9f884a; border-radius: 4px; margin-left: 6px; }
+.log-table .result-cell { font-size: 15px; }
+.log-table .result-time-up { color: #c9e3b3; }
+.log-table .result-defeated { color: #ffb296; }
+.log-table .table-message { height: 280px; background: transparent; font-size: 20px; text-align: center; white-space: normal; }
+.log-pagination { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 15px; color: #c5d2d6; margin: 10px 0 16px; }
+.log-pagination .round-button { width: 44px; height: 44px; }
+.log-main-menu { width: 300px; height: 76px; font-size: 25px; }
+.battle-page { position: relative; width: 100vw; height: 100dvh; overflow: hidden; }
+.arena-canvas { position: absolute; inset: 0; }
+.battle-ui { pointer-events: none; color: #fff0cc; }
+.battle-ui button { pointer-events: auto; }
+.battle-health { position: absolute; top: 28px; left: 27px; display: flex; align-items: center; }
+.battle-health > img { width: 58px; height: 58px; }
+.health-meter { position: relative; width: 320px; height: 60px; }
+.health-meter img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.health-meter span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 23px; color: #fff8df; text-shadow: 0 2px 2px #285929; }
+.battle-counters { position: absolute; top: 27px; right: 27px; display: flex; align-items: center; gap: 20px; }
+.hud-counter { display: flex; align-items: center; justify-content: center; gap: 8px; width: 176px; height: 64px; font-size: 28px;
+  background: url('/assets/png/retina/ui/hud/counter_panel.png') center / 100% 100% no-repeat; }
+.hud-counter img { width: 36px; height: 36px; object-fit: contain; }
+.battle-counters .round-button { width: 70px; height: 70px; }
+.battle-controls { position: absolute; bottom: 50px; display: flex; gap: 8px; align-items: flex-end; }
+.battle-controls-left { left: 22px; }
+.battle-controls-right { right: 22px; }
+.battle-controls .round-button { width: 80px; height: 80px; }
+.battle-controls .raised-control { margin-bottom: 46px; }
+.battle-brand { position: absolute; right: 85px; bottom: 215px; width: 132px; }
+.pause-content, .result-content { position: absolute; inset: 134px 65px 85px; display: flex; align-items: center; flex-direction: column; }
+.pause-content p { margin-top: 30px; color: #dacaab; font-size: 20px; }
+.pause-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.result-score { margin: 20px 0 2px; color: #ffda88; font-size: 88px; line-height: 1; }
+.result-summary { font-size: 20px; margin-top: 14px; color: #d9c8a5; }
+.result-actions { display: flex; flex-direction: column; margin-top: 22px; gap: 10px; }
+.registration-status { font-size: 14px; margin-top: 10px; color: #bfd3c6; }
+.loading-content { position: absolute; inset: 180px 100px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.loading-content progress { width: 360px; height: 24px; accent-color: #e4ad4a; }
+.network-tools { position: fixed; left: 8px; bottom: 8px; z-index: 40; padding: 8px; max-width: calc(100vw - 16px); background: #102030; color: white; border: 1px solid #fbbf24; }
+.network-tools button, .network-tools select { margin: 4px; padding: 6px; }
+@media (max-width: 700px) {
+  .menu-scene { overflow-y: auto; }
+  .menu-stage { position: relative; inset: auto; width: 100%; height: auto; min-height: 100dvh; transform: none; padding: 18px 10px 78px; display: flex; align-items: center; justify-content: center; }
+  .wood-panel { position: relative; left: auto; top: auto; transform: none; width: 100%; height: auto; min-height: 580px; }
+  .wood-panel::before { border-width: 48px 36px; }
+  .wood-panel-main { min-height: 640px; }
+  .wood-panel-log { min-height: 760px; }
+  .main-title { width: 88%; height: 120px; left: 6%; top: 45px; }
+  .main-tagline { top: 175px; font-size: 10px; letter-spacing: 2px; }
+  .main-actions { top: 205px; gap: 6px; }
+  .asset-button { width: 270px; height: 74px; font-size: 23px; }
+  .main-ship { top: 377px; height: 74px; }
+  .main-caption { top: 470px; font-size: 13px; }
+  .main-tabs { top: 507px; gap: 2px; }
+  .main-tabs .asset-button { width: 47%; height: 58px; font-size: 13px; padding: 0 4px; }
+  .options-content { inset: 95px 24px 65px; }
+  .setting-block { max-width: 100%; width: 285px; }
+  .setting-controls output { min-width: 125px; font-size: 25px; }
+  h1, h2 { font-size: 32px; }
+  .options-content h1 { margin-bottom: 35px; }
+  .options-content > .asset-button { margin-top: 28px; }
+  .brand-logo { width: 100px; right: 15px; bottom: 17px; }
+  .menu-help-trigger { left: 15px; bottom: 17px; }
+  .wood-panel-help { position: absolute; width: calc(100% - 20px); min-height: 630px; left: 10px; top: 18px; }
+  .help-content { inset: 80px 35px; font-size: 16px; gap: 16px; }
+  .help-content h1 { font-size: 25px; }
+  .help-content input { width: 100%; }
+  .log-content { inset: 55px 25px 40px; }
+  .log-content h1 { font-size: 29px; }
+  .log-tabs { width: 100%; gap: 2px; }
+  .log-tabs .asset-button { width: 50%; height: 57px; font-size: 13px; padding: 0 4px; }
+  .log-subtitle { text-align: center; font-size: 12px; }
+  .log-table { font-size: 13px; }
+  .log-table td, .log-table th { padding: 0 5px; overflow-wrap: anywhere; }
+  .log-table th { font-size: 10px; letter-spacing: 0; }
+  .log-table .date-cell, .log-table .result-cell { font-size: 10px; }
+  .ranking-star { width: 16px; height: 16px; margin-right: 2px; }
+  .you-badge { font-size: 8px; margin-left: 0; padding: 1px; }
+  .log-pagination { font-size: 12px; gap: 10px; }
+  .log-main-menu { width: 240px; height: 66px; font-size: 20px; }
+  .log-table .table-message { font-size: 15px; }
+  .battle-ui { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; }
+  .battle-health { left: 8px; top: 8px; }
+  .battle-health > img { width: 36px; height: 36px; }
+  .health-meter { width: 150px; height: 38px; }
+  .health-meter span { font-size: 14px; }
+  .battle-counters { top: 50px; right: 8px; gap: 5px; }
+  .hud-counter { width: 100px; height: 44px; font-size: 18px; }
+  .hud-counter img { width: 24px; height: 24px; }
+  .battle-counters .round-button { width: 48px; height: 48px; }
+  .battle-controls { bottom: 12px; gap: 0; }
+  .battle-controls-left { left: 3px; } .battle-controls-right { right: 3px; }
+  .battle-controls .round-button { width: 52px; height: 52px; }
+  .battle-controls .raised-control { margin-bottom: 35px; }
+  .battle-brand { right: 24px; bottom: 116px; width: 100px; }
+  .pause-content, .result-content { inset: 115px 25px 65px; }
+  .pause-content p { font-size: 17px; }
+  .pause-actions { gap: 8px; }
+  .result-score { font-size: 72px; }
+  .result-summary { font-size: 15px; }
+  .result-content h2 { font-size: 29px; text-align: center; }
+  .loading-content { inset: 140px 30px; }
+  .loading-content progress { width: 100%; }
+}
