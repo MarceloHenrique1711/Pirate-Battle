@@ -4,10 +4,10 @@
 
 | Item | Status |
 | --- | --- |
-| Source repository URL | TODO: create/push the owner's repository and fill its public evaluator-accessible URL. |
-| Public game URL | TODO: publish the normal build on Vercel and fill its production URL. |
-| Verified runtime source commit | TODO: record the Git SHA shown in the successful deployment. |
-| Public verification | Not performed yet; no public URL was provided or created in this preparation. |
+| Source repository URL | https://github.com/MarceloHenrique1711/Pirate-Battle |
+| Public game URL | https://pirate-battle-beige.vercel.app/ |
+| Verified runtime source commit | 53297599eeabd9fe667ecf7bf680ff27a7de96f1 |
+| Public verification | Passed. Evidence: reports/public-deployment-verification.json |
 
 Do not submit the table with TODO values. This package prepares the delivery; it
 does not certify that all challenge requirements or deployment checks are complete.
@@ -38,8 +38,8 @@ a Git repository:
 git init -b main
 git add .
 git status
-git commit -m "Deliver Pirate Battle challenge implementation and evidence"
-git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
+git commit -m "Pirate Battle Challenge"
+git remote add origin https://github.com/MarceloHenrique1711/Pirate-Battle
 git push -u origin main
 ```
 
@@ -67,7 +67,7 @@ contains package.json, Node.js 24.x, install `npm ci`, build `npm run build`, ou
 true test/profile flags in hosting environment variables.
 
 After publication, verify the production URL from a signed-out/fresh session and
-run `npm run verify:deploy -- https://YOUR-PUBLIC-URL`. Keep the resulting verification
+run `npm run verify:deploy -- https://pirate-battle-beige.vercel.app/`. Keep the resulting verification
 JSON with the reports and record the verified runtime commit. Check that menu,
 options, battle, result and both list routes also work after refresh. Ranking and
 history must return mocked JSON and update through the real UI. An evaluator must
@@ -96,11 +96,11 @@ throughout evaluation; if runtime code changes, redeploy and verify it again.
 
 Replace the placeholders and send only after completing the mandatory publication:
 
-> Pirate Battle source: [REPOSITORY URL]
+> Pirate Battle source: https://github.com/MarceloHenrique1711/Pirate-Battle
 >
-> Public game: [PRODUCTION URL]
+> Public game: https://pirate-battle-beige.vercel.app/
 >
-> Verified runtime commit: [GIT SHA]
+> Verified runtime commit: 53297599eeabd9fe667ecf7bf680ff27a7de96f1
 >
 > Setup and reproduction commands are in README.md. Architecture and limitations
 > are in ARCHITECTURE.md. The repository includes assets, fixtures, mocks, tests,

@@ -1,0 +1,19 @@
+{
+  "url": "https://pirate-battle-beige.vercel.app",
+  "verifiedAt": "2026-10-09T05:37:11.604Z",
+  "visited": [
+    "/",
+    "/options",
+    "/result",
+    "/ranking",
+    "/history",
+    "/arena"
+  ],
+  "rankingAndHistoryMocks": true,
+  "productionControls": {
+    "e2e": false,
+    "profile": false
+  },
+  "errors": [],
+  "status": "passed"
+}

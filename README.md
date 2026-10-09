@@ -1,5 +1,8 @@
 # Pirate Battle
 
+- Play: https://pirate-battle-beige.vercel.app/
+- Source: https://github.com/MarceloHenrique1711/Pirate-Battle
+
 A single-player naval shooter built with React, strict TypeScript and PixiJS.
 Ranking and match history use Axios, TanStack Query and browser MSW mocks.
 
@@ -30,7 +33,7 @@ npm run dev
 | `npm run test:e2e:update` | Deliberately regenerate screenshots, then inspect them. |
 | `npm run test:e2e:report` | Open the latest generated HTML report. |
 | `npm run profile` / `npm run profile:summary` | Capture and summarize optimized-build profiling. |
-| `npm run verify:deploy -- https://YOUR-PUBLIC-URL` | Check the normal published build, mocks and route refreshes. |
+| `npm run verify:deploy -- https://pirate-battle-beige.vercel.app` | Check the normal published build, mocks and route refreshes. |
 
 No `.env` file is required for normal development. `.env.example` documents the
 non-secret flags; do not copy true test/profile values into hosting settings.
@@ -179,7 +182,7 @@ deployment uploads; they remain part of the Git repository.
    `dist`. Do not publish with `build:e2e` or `build:profile`.
 3. Deploy the intended Git commit. Open the resulting production URL in a fresh
    browser session; the evaluator must not need a private account or access gate.
-4. Install Chromium and run `npm run verify:deploy -- https://YOUR-PUBLIC-URL`.
+4. Install Chromium and run `npm run verify:deploy -- https://pirate-battle-beige.vercel.app/`.
    Copy the resulting verification JSON into `reports/public-deployment-verification.json`
    and record the deployed runtime source commit.
 5. Fill the repository URL, game URL and verified source commit in SUBMISSION.md.
@@ -188,9 +191,7 @@ deployment uploads; they remain part of the Git repository.
 
 Official SPA routing guidance: https://vercel.com/docs/frameworks/frontend/vite
 
-The current package is prepared for deployment; it does **not** contain a public
-URL or claim that a Vercel publication has been performed. Publishing requires the
-owner's repository/account. SUBMISSION.md tracks the remaining mandatory actions.
+SUBMISSION.md tracks the remaining mandatory actions.
 Curated HTML/traces and profiling archives live in `reports/`; see its README for
 checkpoint dates, commands and the distinction between successful runs and older
 diagnostic failures. `docs/` is not used.
